@@ -1,32 +1,36 @@
-# MPSTOK
-# MP STOK: Hospital Warehouse & Inventory Tracking System
+# MP STOK: Secure Desktop Inventory Management System
 
-> **Note:** The source code for this project is proprietary and closed-source as it is an active commercial product deployed in a large-scale private hospital. This repository serves to document the system architecture, engineering decisions, and algorithmic implementations.
+> **Note:** The source code for this project is closed-source as it is an active commercial product deployed in a private hospital. This repository documents the software architecture, module design, and business logic.
 
-## 📌 System Overview
-MP STOK is a comprehensive inventory management system designed to handle the high-throughput, mission-critical supply chain of a private healthcare facility. It transitions legacy manual tracking into a centralized, automated digital infrastructure, ensuring real-time stock visibility and preventing critical medical supply shortages.
-
+##  System Overview
+MP STOK is a standalone Windows desktop application (`.exe`) designed for the isolated, high-security environment of a private healthcare facility. It operates entirely offline (local network/machine) to ensure zero dependency on external internet connections, maximizing data privacy and system reliability for critical hospital inventory.
 
 
-## 🛠️ Technology Stack & Architecture
-* **Language:** C#
-* **Framework:** .NET (Windows Presentation Foundation / Windows Forms)
-* **Database:** Relational Database Management System (SQL)
-* **Architecture Pattern:** Client-Server Architecture with Layered Design (UI, Business Logic, Data Access)
 
-## ⚙️ Core Engineering Features
+##  Technology Stack & Architecture
+* **Platform:** Windows Desktop Application (Executable)
+* **Language:** C# (.NET Framework)
+* **Database:** Local/Intranet Relational Database (e.g., SQLite / MS SQL LocalDB)
+* **Architecture:** Monolithic Desktop Architecture with isolated UI and Data layers.
 
-### 1. Concurrency and Transaction Management
-Handling simultaneous inventory requests from different hospital departments (e.g., ER, Surgery, Wards) without race conditions. Implemented strict database transaction protocols to ensure data integrity during parallel stock deductions.
+##  Core Modules & Interface Design
 
-### 2. Algorithmic Stock Optimization
-* **Low-Stock Alerting:** Developed an automated threshold algorithm that calculates consumption rates and triggers warnings before critical medical supplies run out.
-* **Search & Filter Algorithms:** Optimized querying mechanisms to instantly filter through thousands of inventory items based on custom parameters (expiration date, batch number, department allocation).
+### 1. Dashboard (Ana Sayfa)
+* Provides an at-a-glance overview of critical inventory metrics.
+* Highlights low-stock alerts and recent warehouse activities to ensure immediate operational awareness.
 
-### 3. Role-Based Access Control (RBAC)
-Engineered a secure authentication system segregating user privileges. Administrative staff have full CRUD (Create, Read, Update, Delete) access, while standard users (nurses, technicians) operate under restricted view/consume permissions.
+### 2. Product Operations (Ürün İşlemleri)
+* The core CRUD (Create, Read, Update, Delete) module for inventory management.
+* Handles secure data entry for new medical supplies, stock deduction during consumption, and batch/expiration date tracking without race conditions.
+
+### 3. Reporting (Raporlama)
+* An automated data extraction module replacing manual Excel sheets.
+* Generates structured reports on consumption rates, historical inventory levels, and procurement needs directly from the local database.
+
+### 4. Settings & Configuration (Ayarlar)
+* Role-Based Access Control (RBAC) configuration.
+* Allows administrators to manage user profiles, adjust low-stock warning thresholds, and maintain database backup protocols.
 
 ## 📈 Impact & Deployment
-* Successfully replaced manual Excel-based tracking with a robust relational database model.
-* Currently deployed and actively maintained in a high-demand hospital environment, managing continuous daily operations.
-* Reduced human error in stock counts and optimized the procurement cycle through automated reporting.
+* Successfully replaced legacy manual tracking with a robust, zero-latency local desktop application.
+* Designed to run autonomously without internet access, fully complying with hospital data isolation policies.
